@@ -1,0 +1,20 @@
+.main-container {
+    margin: 0 auto;
+    width: fit-content;
+    box-sizing: border-box;
+}
+
+.title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: darkolivegreen;
+    text-align: center;
+}
+
+.game-container {
+    background-color: lightgrey;
+    padding: 10px;
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    border-bottom: 4px solid grey;
+    border-right: 4px solid grey;
+}

@@ -1,3 +1,5 @@
+import './sass/main.scss';
+
 const body = document.querySelector('body');
 const main = document.createElement('main');
 body.append(main);
@@ -12,20 +14,20 @@ main.append(gameContainer);
 const levelCheck = document.createElement('div');
 levelCheck.classList.add('level-check');
 gameContainer.append(levelCheck);
-const levels = ['beginner', 'master', 'expert'];
+const levels = ['easy', 'medium', 'hard'];
 levels.forEach((lvl) => {
-   const levelConteiner = document.createElement('div');
-   levelConteiner.classList.add('level');
-    const check = document.createElement('input');
-    check.setAttribute('type', 'radio');
-    check.id = lvl;
-    check.name = 'level';
-    const label = document.createElement('label');
-    label.innerText = lvl;
-    label.setAttribute('for', 'level');
-    levelConteiner.append(check);
-    levelConteiner.append(label);
-    levelCheck.append(levelConteiner);
+  const levelConteiner = document.createElement('div');
+  levelConteiner.classList.add('level');
+  const check = document.createElement('input');
+  check.setAttribute('type', 'radio');
+  check.id = lvl;
+  check.name = 'level';
+  const label = document.createElement('label');
+  label.innerText = lvl;
+  label.setAttribute('for', 'level');
+  levelConteiner.append(check);
+  levelConteiner.append(label);
+  levelCheck.append(levelConteiner);
 });
 const panel = document.createElement('div');
 panel.classList.add('panel');
@@ -46,9 +48,8 @@ panel.append(timer);
 const field = document.createElement('div');
 field.classList.add('field');
 gameContainer.append(field);
-for (let i=0; i<100; i++) {
-    const cell = document.createElement('div');
-    cell.classList.add('cell');
-    field.append(cell);
+for (let i = 0; i < 100; i++) {
+  const cell = document.createElement('div');
+  cell.classList.add('cell');
+  field.append(cell);
 }
-

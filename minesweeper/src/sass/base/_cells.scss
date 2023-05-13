@@ -1,0 +1,16 @@
+.cell {
+    width: 8%;
+    height: 8%;
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    border-bottom: 4px solid grey;
+    border-right: 4px solid grey;
+    background-color: darkseagreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell_open {
+    background-color: brown;
+}
