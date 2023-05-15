@@ -1,5 +1,7 @@
 import { generateRandom } from "./getRandom";
 import { createCell } from "./cell";
+import { state } from "./state";
+import { levels } from "./state";
 
 export let matrix = [];
 
@@ -34,7 +36,7 @@ export function getNeighbors (coordinates) {
   );
 }
 
-export function createMatrix(width = 10, height = 10, bombcount = 10) {
+export function createMatrix(width = state.level.width, height = state.level.height, bombcount = state.level.bombcount) {
     matrix = Array.from({length: height}, () => Array.from({length: width}, () => 0 ));
     addBombs(bombcount);
     matrix.forEach((matrixLine, y) => {

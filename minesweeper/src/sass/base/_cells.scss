@@ -1,6 +1,6 @@
 .cell {
-    width: 8%;
-    height: 8%;
+    width: 2rem;
+    height: 2rem;
     border-top: 4px solid white;
     border-left: 4px solid white;
     border-bottom: 4px solid grey;
@@ -9,8 +9,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    &.cell-1 {
+        color: blue;
+      }
+  
+      &.cell-2 {
+        color: green;
+      }
+  
+      &.cell-3 {
+        color: red;
+      }
+  
+      &.cell-4 {
+        color: darkblue;
+      }
+  
+      &.cell-5 {
+        color: brown;
+      }
+  
+      &.cell-6 {
+        color: turquoise;
+      }
+  
+      &.cell-7 {
+        color: black;
+      }
+  
+      &.cell-8 {
+        color: white;
+      }
 }
 
 .cell_open {
     background-color: brown;
 }
+

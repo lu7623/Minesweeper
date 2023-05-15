@@ -1,6 +1,4 @@
 .field {
-    width: 400px;
-    height: 400px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -10,4 +8,20 @@
     border-left: 4px solid grey;
     border-bottom: 4px solid white;
     border-right: 4px solid white;
+}
+
+.field-small {
+    width: 400px;
+    height: 400px;
+    
+}
+
+.field-medium {
+width: 600px;
+height: 600px;
+}
+
+.field-large {
+    width: 1000px;
+    height: 1000px
 }

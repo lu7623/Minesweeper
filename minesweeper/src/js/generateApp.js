@@ -1,3 +1,6 @@
+import { state } from "./state";
+import { levels } from "./state";
+
 export function generateApp() {
   const body = document.querySelector('body');
   const main = document.createElement('main');
@@ -32,7 +35,7 @@ export function generateApp() {
   panel.classList.add('panel');
   const counter = document.createElement('div');
   counter.classList.add('counter');
-  counter.value = 10;
+  counter.value = state.level.bombcount;
   counter.innerText = counter.value.toString().padStart(3, '0');
   const replay = document.createElement('div');
   replay.classList.add('replay');
@@ -46,6 +49,12 @@ export function generateApp() {
   panel.append(timer);
   const field = document.createElement('div');
   field.classList.add('field');
+  if (state.level.height == 10)
+  {field.classList.add('field-small')}
+  else if (state.level.height == 15)
+  {field.classList.add('field-medium')}
+  else if (state.level.height == 25)
+  {field.classList.add('field-large')}
   gameContainer.append(field);
   return(field);
 }
