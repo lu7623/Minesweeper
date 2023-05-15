@@ -1,24 +1,23 @@
 .panel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-        margin-bottom: 10px;
-        padding: 7px;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 7px;
+}
 
-    .replay {   
-        padding: 3px;
-        background-image: url(../assets/smile.png);
-        background-size: cover;
-        height: 2rem;
-        width: 2rem;
-    }
-    
-    
-    .counter,
-    .timer {
-        background-color: #a9a9a9;
-        color: forestgreen;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 3rem;
-    }
+.replay {
+  padding: 3px;
+  background-image: url(../assets/smile.png);
+  background-size: cover;
+  height: 2rem;
+  width: 2rem;
+}
+
+.counter,
+.timer {
+  background-color: #a9a9a9;
+  color: forestgreen;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3rem;
+}

@@ -13,9 +13,67 @@ export function generateApp() {
   gameContainer.classList.add('game-container');
   main.append(title);
   main.append(gameContainer);
+  const settings = document.createElement('div');
+  settings.classList.add('settings');
+  const settingsIcon = document.createElement('div');
+  settingsIcon.classList.add('top');
+  settingsIcon.innerText = 'Settings';
+  const topScore = document.createElement('div');
+  topScore.classList.add('top');
+  topScore.innerText = 'Top Score'
+  const topPanel = document.createElement('div');
+  topPanel.classList.add('top-panel');
+  gameContainer.append(topPanel);
+  topPanel.append(settingsIcon);
+  topPanel.append(topScore);
+  const sound = document.createElement('div');
+  sound.classList.add('sound-check');
+  const soundSet = document.createElement('span');
+  soundSet.innerText = 'Sound';
+  soundSet.id = 'soundSet';
+  const soundLabel = document.createElement('label');
+  soundLabel.classList.add('switch');
+  const soundSwitch =  document.createElement('input');
+soundSwitch.classList.add('optionsSwitch');
+soundSwitch.setAttribute('type', 'checkbox');
+soundSwitch.id = 'soundSet';
+soundSwitch.checked = true;
+const soundSpan = document.createElement('span');
+soundSpan.classList.add('slider');
+soundSpan.classList.add('round');
+  soundLabel.append(soundSwitch);
+  soundLabel.append(soundSpan);
+  sound.append(soundSet);
+  sound.append(soundLabel);
+  settings.append(sound);
+gameContainer.append(settings);
+const themeCheck = document.createElement('div');
+themeCheck.innerText = 'Appearence mode';
+themeCheck.classList.add('theme-check');
+settings.append(themeCheck);
+const themes = ['light', 'dark'];
+themes.forEach((theme) => {
+const themeConteiner = document.createElement('div');
+    themeConteiner.classList.add('theme');
+    const themeInput = document.createElement('input');
+    themeInput.setAttribute('type', 'radio');
+    themeInput.id = theme;
+    themeInput.name = 'theme';
+    const themeLabel = document.createElement('label');
+    themeLabel.innerText = theme;
+    themeLabel.setAttribute('for', 'theme');
+    themeConteiner.append(themeInput);
+    themeConteiner.append(themeLabel);
+    themeCheck.append(themeConteiner);
+    if (theme === state.theme) {
+      themeInput.checked = true;
+}
+  });
+ 
   const levelCheck = document.createElement('div');
+  levelCheck.innerText = 'Difficulty level'
   levelCheck.classList.add('level-check');
-  gameContainer.append(levelCheck);
+  settings.append(levelCheck);
   const levels = ['easy', 'medium', 'hard'];
   levels.forEach((lvl) => {
     const levelConteiner = document.createElement('div');
@@ -26,11 +84,15 @@ export function generateApp() {
     check.name = 'level';
     const label = document.createElement('label');
     label.innerText = lvl;
+    if (lvl === state.level.name) {
+      check.checked = true;
+    }
     label.setAttribute('for', 'level');
     levelConteiner.append(check);
     levelConteiner.append(label);
     levelCheck.append(levelConteiner);
   });
+  settings.append(levelCheck);
   const panel = document.createElement('div');
   panel.classList.add('panel');
   const counter = document.createElement('div');
@@ -60,12 +122,14 @@ export function generateApp() {
     panel.classList.add('panel-light');
     counter.classList.add('counter-light');
     timer.classList.add('timer-light');
+    replay.classList.add('replay-light');
     gameContainer.classList.add('game-container-light')
   } else {
     field.classList.add('field-dark');
     panel.classList.add('panel-dark');
     counter.classList.add('counter-dark');
     timer.classList.add('timer-dark');
+    replay.classList.add('replay-dark');
     gameContainer.classList.add('game-container-dark');
     body.classList.add('dark');
   }

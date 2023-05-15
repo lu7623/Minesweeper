@@ -8,7 +8,8 @@
     @extend %border2-light;
 }
 
-.game-container-light {
+.game-container-light, 
+.replay-light {
     @extend %border1-light;
     background-color: $box-light;
 }
