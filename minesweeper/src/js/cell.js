@@ -1,5 +1,6 @@
 import { generateApp } from './generateApp';
 import { getNeighbors } from './matrix';
+import { state } from './state'
 
 class Cell {
   constructor(isBomb, coordinates) {
@@ -35,7 +36,12 @@ class Cell {
     const cellElem = document.createElement('div');
     this.cellElem = cellElem;
     cellElem.innerHTML = this.value || '';
-cellElem.classList.add('cell')
+cellElem.classList.add('cell');
+if (state.theme == 'light') {
+  cellElem.classList.add('cell-light')
+} else {
+  cellElem.classList.add('cell-dark')
+}
     if (this.value) {
   cellElem.classList.add(`cell-${this.value}`)
     }

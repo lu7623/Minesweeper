@@ -1,0 +1,20 @@
+.cell-light {
+    @extend %border1-light;
+    background-color: $cells-light;
+}
+
+.field-light,
+.panel-light {
+    @extend %border2-light;
+}
+
+.game-container-light {
+    @extend %border1-light;
+    background-color: $box-light;
+}
+
+.counter-light,
+.timer-light {
+    background-color: #a9a9a9;
+@extend %border-thin-light; 
+}

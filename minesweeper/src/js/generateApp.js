@@ -55,6 +55,20 @@ export function generateApp() {
   {field.classList.add('field-medium')}
   else if (state.level.height == 25)
   {field.classList.add('field-large')}
+  if (state.theme == 'light') {
+    field.classList.add('field-light');
+    panel.classList.add('panel-light');
+    counter.classList.add('counter-light');
+    timer.classList.add('timer-light');
+    gameContainer.classList.add('game-container-light')
+  } else {
+    field.classList.add('field-dark');
+    panel.classList.add('panel-dark');
+    counter.classList.add('counter-dark');
+    timer.classList.add('timer-dark');
+    gameContainer.classList.add('game-container-dark');
+    body.classList.add('dark');
+  }
   gameContainer.append(field);
   return(field);
 }

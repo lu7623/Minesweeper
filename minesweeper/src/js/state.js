@@ -19,7 +19,7 @@ export const levels = [
   export const state = {
     level: levels[2],
     sound: true,
-    theme: 'light'
+    theme: 'dark'
   }
   
 //   function setLocalStorage() {

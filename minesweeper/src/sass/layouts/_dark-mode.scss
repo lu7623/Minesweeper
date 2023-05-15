@@ -1,0 +1,26 @@
+.dark {
+    background-color: rgb(30, 30, 30);
+}
+
+.cell-dark {
+    @extend %border1-dark;
+    background-color: $cells-dark;
+}
+
+.field-dark,
+.panel-dark {
+    @extend %border2-dark;
+}
+
+.game-container-dark,
+.replay {
+    @extend %border1-dark;
+    background-color: $box-dark;
+    color: beige;
+}
+
+.counter-dark,
+.timer-dark {
+    background-color: #474646;
+@extend %border-thin-dark; 
+}

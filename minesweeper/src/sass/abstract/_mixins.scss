@@ -1,0 +1,41 @@
+%border1-light {
+    border-top: 4px solid $border-front-light;
+    border-left: 4px solid $border-front-light;
+    border-bottom: 4px solid $border-back-light;
+    border-right: 4px solid $border-back-light;
+}
+
+%border2-light {
+    border-top: 4px solid $border-back-light;
+    border-left: 4px solid $border-back-light;
+    border-bottom: 4px solid $border-front-light;
+    border-right: 4px solid $border-front-light;
+}
+
+%border1-dark {
+    border-top: 4px solid $border-front-dark;
+    border-left: 4px solid $border-front-dark;
+    border-bottom: 4px solid $border-back-dark;
+    border-right: 4px solid $border-back-dark;
+}
+
+%border2-dark {
+    border-top: 4px solid $border-back-dark;
+    border-left: 4px solid $border-back-dark;
+    border-bottom: 4px solid $border-front-dark;
+    border-right: 4px solid $border-front-dark;
+}
+
+%border-thin-light {
+    border-top: 2px solid $border-back-light;
+    border-left: 2px solid $border-back-light;
+    border-bottom: 2px solid $border-front-light;
+    border-right: 2px solid $border-front-light;
+}
+
+%border-thin-dark {
+    border-top: 2px solid $border-back-dark;
+    border-left: 2px solid $border-back-dark;
+    border-bottom: 2px solid $border-front-dark;
+    border-right: 2px solid $border-front-dark;
+}
