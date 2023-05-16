@@ -1,6 +1,6 @@
 .cell {
-    width: 2rem;
-    height: 2rem;
+    width: $cell-size;
+    height: $cell-size;
     display: flex;
     align-items: center;
     justify-content: center;

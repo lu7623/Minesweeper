@@ -20,7 +20,7 @@ export const levels = [
   ]
   
   export const state = {
-    level: levels[2],
+    level: levels[0],
     sound: true,
     theme: 'light'
   }

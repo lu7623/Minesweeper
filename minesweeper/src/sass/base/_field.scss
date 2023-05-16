@@ -7,8 +7,8 @@
 }
 
 .field-small {
-    width: 400px;
-    height: 400px;
+    width: calc(($cell-size + 0.8rem) * 10);
+    height: calc(($cell-size + 0.8rem) * 10);
     
 }
 

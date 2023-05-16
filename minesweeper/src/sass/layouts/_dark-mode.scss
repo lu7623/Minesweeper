@@ -1,4 +1,4 @@
-.dark {
+.body-dark {
     background-color: rgb(30, 30, 30);
 }
 
@@ -7,12 +7,14 @@
     background-color: $cells-dark;
 }
 
+
+.settings-dark,
 .field-dark,
 .panel-dark {
     @extend %border2-dark;
 }
 
-.game-container-dark,
+.gameContainer-dark,
 .replay-dark {
     @extend %border1-dark;
     background-color: $box-dark;

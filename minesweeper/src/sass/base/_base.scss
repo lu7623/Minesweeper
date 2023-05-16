@@ -1,0 +1,11 @@
+html {
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+.hide {
+ height: 0;
+border: none;
+@extend %transition;
+overflow: hidden;
+}
