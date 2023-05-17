@@ -8,10 +8,22 @@
 
 .replay {
   padding: 3px;
-  background-image: url(../assets/smile.png);
-  background-size: cover;
+background-size: contain;
   height: 2rem;
   width: 2rem;
+}
+
+
+.replay-smile {
+  background-image: url(../assets/smile.png);
+}
+
+.replay-dead {
+  background-image: url(../assets/dead.png);
+}
+
+.replay:hover {
+cursor: pointer;
 }
 
 .counter,

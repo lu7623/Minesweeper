@@ -107,6 +107,7 @@ export function generateApp() {
   counter.innerText = counter.value.toString().padStart(3, "0");
   const replay = document.createElement("div");
   replay.classList.add("replay");
+  replay.classList.add("replay-smile");
   const timer = document.createElement("div");
   timer.classList.add("timer");
   timer.value = 0;

@@ -1,7 +1,6 @@
 import { generateRandom } from "./getRandom";
 import { createCell } from "./cell";
 import { state } from "./state";
-import { levels } from "./state";
 
 export let matrix = [];
 
@@ -18,10 +17,10 @@ while (currentBombs) {
         currentBombs -= 1;
     }
 }
-
 }
+
 export function getNeighbors (coordinates) {
-  const   {x, y} = coordinates;
+  const  {x, y} = coordinates;
   const n_1 = matrix[y - 1]?.[x];
   const n_2 = matrix[y - 1]?.[x + 1];
   const n_3 = matrix[y]?.[x + 1];
@@ -38,12 +37,22 @@ export function getNeighbors (coordinates) {
 
 export function createMatrix(width = state.level.width, height = state.level.height, bombcount = state.level.bombcount) {
     matrix = Array.from({length: height}, () => Array.from({length: width}, () => 0 ));
+    console.log(matrix); 
     addBombs(bombcount);
     matrix.forEach((matrixLine, y) => {
     matrixLine.forEach((matrixElem, x) => {
-      const newCell = createCell(Boolean(matrixElem), {x, y});
-      matrix[y][x] = newCell;
-    })
-    })
-    console.log(matrix);
+      const newCell = createCell(Boolean(matrixElem), { x, y });
+    matrix[y][x] = newCell;
+   })
+   })
 } 
+
+export function openAllCells() {
+  matrix.forEach((matrixLine) => {
+    matrixLine.forEach((box) => {
+      if (box.isBomb) {
+        box.open();
+      }
+    });
+  });
+}

@@ -1,4 +1,3 @@
-import { generateApp } from "./generateApp";
 import { state } from "./state";
 import { levels } from "./state";
 import { createMatrix } from "./matrix";
@@ -31,20 +30,31 @@ export function settingsSet() {
 
   // change level 
 
-console.log(state);
 const levelsChange = document.getElementsByName("level");
 levelsChange.forEach((lvlChange) => {
     lvlChange.addEventListener("change", function () {
         levels.forEach(lvl => {
             if (lvlChange.value == lvl.name) {
                 state.level = lvl;
-                console.log(state);
                 changeLvl();
             }
         })
   
     });
   });
+
+// restart 
+
+const replay = document.querySelector('.replay');
+const field = document.querySelector('.field');
+replay.addEventListener ('click' , () => {
+    field.replaceChildren();
+      createMatrix();
+      if (replay.classList.contains('replay-dead')) {
+      replay.classList.remove('replay-dead');
+      replay.classList.add('replay-smile')
+      }
+})
 }
 
 
