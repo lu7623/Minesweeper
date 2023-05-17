@@ -87,6 +87,7 @@ export function generateApp() {
     check.setAttribute("type", "radio");
     check.id = lvl;
     check.name = "level";
+    check.value = lvl;
     const label = document.createElement("label");
     label.innerText = lvl;
     if (lvl === state.level.name) {
@@ -123,24 +124,29 @@ export function generateApp() {
   } else if (state.level.height == 25) {
     field.classList.add("field-large");
   }
+  const elements = [
+    [body, "body"],
+    [field, "field"],
+    [panel, "panel"],
+    [gameContainer, "gameContainer"],
+    [counter, "counter"],
+    [replay, "replay"],
+    [timer, "timer"],
+    [settings, "settings"],
+    [settingsIcon, "btn"],
+    [topScore, "score"],
+  ];
+  elements.forEach(elem => {
+    elem[0].classList.add('theme-change')
+  })
   if (state.theme == "light") {
-    field.classList.add("field-light");
-    panel.classList.add("panel-light");
-    counter.classList.add("counter-light");
-    timer.classList.add("timer-light");
-    replay.classList.add("replay-light");
-    gameContainer.classList.add("gameContainer-light");
-    settings.classList.add("settings-light");
-    body.classList.add('body-light');
+    elements.forEach((elem) => {
+      elem[0].classList.add(`${elem[1]}-light`);
+    });
   } else {
-    field.classList.add("field-dark");
-    panel.classList.add("panel-dark");
-    counter.classList.add("counter-dark");
-    timer.classList.add("timer-dark");
-    replay.classList.add("replay-dark");
-    gameContainer.classList.add("gameContainer-dark");
-    settings.classList.add("settings-dark");
-    body.classList.add("body-dark");
+    elements.forEach((elem) => {
+      elem[0].classList.add(`${elem[1]}-dark`);
+    });
   }
   gameContainer.append(field);
   return field;

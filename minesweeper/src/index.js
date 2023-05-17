@@ -4,7 +4,7 @@ import { createMatrix } from './js/matrix';
 import { startTimer } from './js/timer';
 import { settingsSet } from './js/settings';
 
-function startGame() {
+export function startGame() {
   createMatrix();
   settingsSet();
 }

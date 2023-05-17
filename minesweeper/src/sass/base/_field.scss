@@ -9,15 +9,14 @@
 .field-small {
     width: calc(($cell-size + 0.8rem) * 10);
     height: calc(($cell-size + 0.8rem) * 10);
-    
 }
 
 .field-medium {
-width: 600px;
-height: 600px;
+    width: calc(($cell-size + 0.8rem) * 15);
+    height: calc(($cell-size + 0.8rem) * 15);
 }
 
 .field-large {
-    width: 1000px;
-    height: 1000px
+    width: calc(($cell-size + 0.8rem) * 25);
+    height: calc(($cell-size + 0.8rem) * 25);
 }
