@@ -35,7 +35,7 @@ export function getNeighbors (coordinates) {
   );
 }
 
-export function createMatrix(width = state.level.width, height = state.level.height, bombcount = state.level.bombcount) {
+export function createMatrix(width = state.level.width, height = state.level.height, bombcount = state.bombcount) {
     matrix = Array.from({length: height}, () => Array.from({length: width}, () => 0 ));
     console.log(matrix); 
     addBombs(bombcount);
@@ -44,7 +44,12 @@ export function createMatrix(width = state.level.width, height = state.level.hei
       const newCell = createCell(Boolean(matrixElem), { x, y });
     matrix[y][x] = newCell;
    })
-   })
+   });
+   const replay = document.querySelector('.replay');
+   if (replay.classList.contains('replay-dead')) {
+    replay.classList.remove('replay-dead');
+    replay.classList.add('replay-smile')
+    }
 } 
 
 export function openAllCells() {

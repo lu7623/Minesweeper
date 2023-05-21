@@ -50,12 +50,20 @@ const field = document.querySelector('.field');
 replay.addEventListener ('click' , () => {
     field.replaceChildren();
       createMatrix();
-      if (replay.classList.contains('replay-dead')) {
-      replay.classList.remove('replay-dead');
-      replay.classList.add('replay-smile')
-      }
       const counter = document.querySelector('.counter');
-      counter.value = state.level.bombcount;
+      counter.value = state.bombcount;
+      counter.innerText = counter.value.toString().padStart(3, "0");
+})
+
+// set bombs number
+
+const bombsNumber = document.getElementById('bombs');
+bombsNumber.addEventListener('change', () => {
+  state.bombcount = bombsNumber.value;
+  field.replaceChildren();
+      createMatrix();
+      const counter = document.querySelector('.counter');
+      counter.value = state.bombcount;
       counter.innerText = counter.value.toString().padStart(3, "0");
 })
 }

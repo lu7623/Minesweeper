@@ -2,27 +2,25 @@ export const levels = [
     {
       name: 'easy',
       width: 10,
-      height: 10,
-      bombcount: 10
+      height: 10
     },
     {
       name: 'medium',
       width: 15,
-      height: 15,
-      bombcount: 50
+      height: 15
     },
     {
       name: 'hard',
       width: 25,
-      height: 25,
-      bombcount: 99
+      height: 25
     }
   ]
   
   export const state = {
     level: levels[0],
     sound: true,
-    theme: 'light'
+    theme: 'light',
+    bombcount: 10
   }
   
 //   function setLocalStorage() {

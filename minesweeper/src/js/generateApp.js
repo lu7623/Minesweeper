@@ -1,5 +1,6 @@
 import { state } from "./state";
 import { levels } from "./state";
+import { createMatrix } from "./matrix";
 
 export function generateApp() {
   const body = document.querySelector("body");
@@ -103,7 +104,7 @@ export function generateApp() {
   panel.classList.add("panel");
   const counter = document.createElement("div");
   counter.classList.add("counter");
-  counter.value = state.level.bombcount;
+  counter.value = state.bombcount;
   counter.innerText = counter.value.toString().padStart(3, "0");
   const replay = document.createElement("div");
   replay.classList.add("replay");
@@ -112,10 +113,25 @@ export function generateApp() {
   timer.classList.add("timer");
   timer.value = 0;
   timer.innerText = timer.value.toString().padStart(3, "0");
+  const bombs = document.createElement('div');
+  bombs.classList.add('bombs');
+  const bombsNumber = document.createElement("input");
+  bombsNumber.setAttribute("type", "range");
+  bombsNumber.name = "bombs";
+  bombsNumber.id = "bombs";
+  bombsNumber.value = 10;
+  bombsNumber.setAttribute("min", "1");
+  bombsNumber.setAttribute("max", "99");
+  const bombsLabel = document.createElement('label');
+  bombsLabel.setAttribute("for", "bombs");
+  bombsLabel.innerText = '   Bombs';
+  bombs.append(bombsNumber);
+  bombs.append(bombsLabel);
   gameContainer.append(panel);
   panel.append(counter);
   panel.append(replay);
   panel.append(timer);
+  settings.append(bombs);
   const field = document.createElement("div");
   field.classList.add("field");
   if (state.level.height == 10) {
