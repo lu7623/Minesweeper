@@ -1,6 +1,8 @@
 import { generateRandom } from "./getRandom";
 import { createCell } from "./cell";
 import { state } from "./state";
+import { lose } from "./alerts";
+import { stopTimer } from "./timer";
 
 export let matrix = [];
 
@@ -60,4 +62,6 @@ export function openAllCells() {
       }
     });
   });
+  stopTimer();
+  setTimeout(lose, 500);
 }

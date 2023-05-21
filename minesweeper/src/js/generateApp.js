@@ -1,6 +1,5 @@
 import { state } from "./state";
-import { levels } from "./state";
-import { createMatrix } from "./matrix";
+
 
 export function generateApp() {
   const body = document.querySelector("body");
@@ -167,6 +166,7 @@ export function generateApp() {
   }
   gameContainer.append(field);
   return field;
+
 }
 
 

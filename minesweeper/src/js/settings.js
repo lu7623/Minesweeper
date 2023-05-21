@@ -1,6 +1,10 @@
 import { state } from "./state";
 import { levels } from "./state";
 import { createMatrix } from "./matrix";
+import { stepsCount } from "./alerts";
+import { setTimer } from "./timer";
+import { stopTimer } from "./timer";
+import { startTimer } from "./timer";
 
 // settings button click
 
@@ -39,20 +43,18 @@ levelsChange.forEach((lvlChange) => {
                 changeLvl();
             }
         })
-  
+  stopTimer();
     });
   });
 
 // restart 
 
 const replay = document.querySelector('.replay');
-const field = document.querySelector('.field');
+
 replay.addEventListener ('click' , () => {
-    field.replaceChildren();
-      createMatrix();
-      const counter = document.querySelector('.counter');
-      counter.value = state.bombcount;
-      counter.innerText = counter.value.toString().padStart(3, "0");
+   fieldReset();
+   stopTimer();
+   setTimer();
 })
 
 // set bombs number
@@ -60,12 +62,27 @@ replay.addEventListener ('click' , () => {
 const bombsNumber = document.getElementById('bombs');
 bombsNumber.addEventListener('change', () => {
   state.bombcount = bombsNumber.value;
+  fieldReset();
+  setTimer();
+});
+
+stepsCount();
+setTimer();
+}
+
+export function fieldReset() {
+  const field = document.querySelector('.field');
   field.replaceChildren();
       createMatrix();
       const counter = document.querySelector('.counter');
       counter.value = state.bombcount;
       counter.innerText = counter.value.toString().padStart(3, "0");
-})
+      field.removeEventListener('click', (e) => {
+    
+        state.steps +=1;
+ 
+    })
+    
 }
 
 

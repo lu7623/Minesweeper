@@ -20,7 +20,9 @@ export const levels = [
     level: levels[0],
     sound: true,
     theme: 'light',
-    bombcount: 10
+    bombcount: 10,
+    time: 0,
+    steps: 0
   }
   
 //   function setLocalStorage() {
