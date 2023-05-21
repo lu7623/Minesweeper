@@ -54,6 +54,9 @@ replay.addEventListener ('click' , () => {
       replay.classList.remove('replay-dead');
       replay.classList.add('replay-smile')
       }
+      const counter = document.querySelector('.counter');
+      counter.value = state.level.bombcount;
+      counter.innerText = counter.value.toString().padStart(3, "0");
 })
 }
 

@@ -39,7 +39,8 @@ class Cell {
     this.isFlagged = isFlagged;
     this.cellElem.innerHTML = isFlagged ? "🚩" : "";
     const counter = document.querySelector('.counter');
-    counter.value --;
+    if (counter.value>0) {
+    counter.value-=1;}
     counter.innerText = counter.value.toString().padStart(3, "0");
   }
 
@@ -54,6 +55,10 @@ class Cell {
   onCellClick(allowOpenNumber = false) {
     if (this.isFlagged) {
       this.setFlag(false);
+      const counter = document.querySelector('.counter');
+      counter.value +=2;
+      console.log(counter.value);
+      counter.innerText = counter.value.toString().padStart(3, "0");
       return;
     }
 
@@ -97,7 +102,9 @@ class Cell {
     this.cellElem.addEventListener("click", () => this.onCellClick());
     this.cellElem.addEventListener("contextmenu", (e) => {
       e.preventDefault();
-      this.setFlag(true);
+      if (this.isFlagged) {this.onCellClick()}
+      else {
+      this.setFlag(true);}
     });
 
     field.append(cellElem);

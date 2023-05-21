@@ -152,3 +152,6 @@ export function generateApp() {
   gameContainer.append(field);
   return field;
 }
+
+
+
