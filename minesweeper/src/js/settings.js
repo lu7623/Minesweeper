@@ -44,6 +44,7 @@ levelsChange.forEach((lvlChange) => {
             }
         })
   stopTimer();
+  setTimer();
     });
   });
 
@@ -63,6 +64,7 @@ const bombsNumber = document.getElementById('bombs');
 bombsNumber.addEventListener('change', () => {
   state.bombcount = bombsNumber.value;
   fieldReset();
+  stopTimer();
   setTimer();
 });
 
