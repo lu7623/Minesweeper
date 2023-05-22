@@ -19,4 +19,20 @@
 .field-large {
     width: calc(($cell-size + 0.8rem) * 25);
     height: calc(($cell-size + 0.8rem) * 25);
-}
+    @include media-tablet {
+        width: calc((2.5rem + 0.8rem) * 25);
+    height: calc((2.5rem + 0.8rem) * 25);
+        & > .cell {
+            width: 2.5rem;
+            height: 2.5rem
+        }
+    }
+    @include media-mobile {
+        width: 68rem;
+    height: 70rem;
+        & > .cell {
+            width: 2rem;
+            height: 2rem
+        }
+    }
+    }

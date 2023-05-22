@@ -1,6 +1,13 @@
 html {
     font-size: 10px;
     box-sizing: border-box;
+    @include media-tablet{
+        font-size: 7px;
+
+    }
+    @include media-mobile {
+        font-size: 5px;
+    }
 }
 
 .hide {
