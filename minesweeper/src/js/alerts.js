@@ -20,6 +20,7 @@ export function win () {
     Steps: ${state.steps} \n
     Play again`);
     if (msg) {
+        stopTimer();
         fieldReset(); 
         setTimer();
         }

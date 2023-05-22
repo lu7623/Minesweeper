@@ -4,6 +4,11 @@ import { state } from "./state";
 import { openAllCells } from "./matrix";
 import { empty } from "./matrix";
 import { win } from "./alerts";
+import { playSound } from "./sound";
+
+import winSound from '../assets/win.mp3';
+import click from '../assets/click.mp3';
+import flag from '../assets/flag.mp3';
 
 class Cell {
   constructor(isBomb, coordinates) {
@@ -40,6 +45,7 @@ class Cell {
   setFlag(isFlagged) {
     this.isFlagged = isFlagged;
     this.cellElem.innerHTML = isFlagged ? "🚩" : "";
+    playSound(flag);
     const counter = document.querySelector('.counter');
     if (counter.value>0) {
     counter.value-=1;}
@@ -56,6 +62,7 @@ class Cell {
 
   onCellClick(allowOpenNumber = false) {
     if (this.isFlagged) {
+      
       this.setFlag(false);
       const counter = document.querySelector('.counter');
       counter.value +=2;
@@ -64,6 +71,7 @@ class Cell {
     }
 
     if (!this.value && !this.isOpenned) {
+    
       this.open();
       const allNeighbors = getNeighbors(this.coordinates);
       allNeighbors.forEach((neighbor) => {
@@ -77,6 +85,7 @@ class Cell {
     ) {
       this.open();
     } else if (this.isBomb) {
+      
       openAllCells();
       const replay = document.querySelector('.replay');
       replay.classList.remove('replay-smile');
@@ -101,6 +110,7 @@ class Cell {
    
     this.cellElem.addEventListener("click", () => {
       this.onCellClick();
+      playSound(click);
       let k=0;
     empty.forEach(cell => {   
       if (!cell.isOpenned) {
@@ -110,13 +120,16 @@ class Cell {
     })
     if (k === 0) {
       setTimeout(win, 500);
+      playSound(winSound);
     }
     });
     this.cellElem.addEventListener("contextmenu", (e) => {
       e.preventDefault();
+      
       if (this.isFlagged) {this.onCellClick()}
       else {
-      this.setFlag(true);}
+      this.setFlag(true);
+      playSound(flag);}
     });
 
     field.append(cellElem);

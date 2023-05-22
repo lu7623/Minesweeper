@@ -23,7 +23,6 @@ export const levels = [
     bombcount: 10,
     time: 0,
     steps: 0,
-    win: false
   }
   
 //   function setLocalStorage() {

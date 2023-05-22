@@ -34,7 +34,6 @@ export function generateApp() {
   sound.classList.add("sound-check");
   const soundSet = document.createElement("span");
   soundSet.innerText = "Sound";
-  soundSet.id = "soundSet";
   const soundLabel = document.createElement("label");
   soundLabel.classList.add("switch");
   const soundSwitch = document.createElement("input");
@@ -42,11 +41,7 @@ export function generateApp() {
   soundSwitch.setAttribute("type", "checkbox");
   soundSwitch.id = "soundSet";
   soundSwitch.checked = true;
-  const soundSpan = document.createElement("span");
-  soundSpan.classList.add("slider");
-  soundSpan.classList.add("round");
   soundLabel.append(soundSwitch);
-  soundLabel.append(soundSpan);
   sound.append(soundSet);
   sound.append(soundLabel);
   settings.append(sound);

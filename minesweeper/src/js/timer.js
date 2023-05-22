@@ -1,3 +1,5 @@
+
+
 const { state } = require("./state");
 
 export function start() { 
@@ -13,7 +15,7 @@ let intervalID;
     intervalID = setInterval(start, 1000);
     const field = document.querySelector('.field');
     field.removeEventListener('click', () => {
-        console.log('click');
+      
         startTimer();
       }, { once: true });
 }
@@ -32,9 +34,12 @@ export function stopTimer() {
 
 export function setTimer() {
     const field = document.querySelector('.field');
-    field.addEventListener('click', () => {
-        console.log('click');
+    field.addEventListener('click', (e) => {
+        console.log(e.target.innerText);
         startTimer();
       }, { once: true });
       
 }
+
+
+

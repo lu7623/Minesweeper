@@ -27,6 +27,10 @@ module.exports = {
                  test: /\.svg$/,
                  type: 'asset',
                },
+               {
+                test: /\.mp3$/,
+                loader: 'file-loader'
+            }
     ],
   },
   plugins: [

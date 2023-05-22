@@ -21,6 +21,14 @@ export function settingsSet() {
     }
   });
 
+  // sound
+
+const sound = document.getElementById('soundSet');
+sound.addEventListener('change', () => {
+  if (sound.checked) {state.sound = true}
+  else {state.sound = false}
+})
+
 // change theme
 
   const themes = document.getElementsByName("theme");
@@ -79,6 +87,7 @@ export function fieldReset() {
       const counter = document.querySelector('.counter');
       counter.value = state.bombcount;
       counter.innerText = counter.value.toString().padStart(3, "0");
+      state.steps = 0;
       field.removeEventListener('click', (e) => {
     
         state.steps +=1;

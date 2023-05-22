@@ -3,6 +3,8 @@ import { createCell } from "./cell";
 import { state } from "./state";
 import { lose } from "./alerts";
 import { stopTimer } from "./timer";
+import { playSound } from "./sound";
+import loseSound from '../assets/lose.mp3';
 
 export let matrix = [];
 export let empty = [];
@@ -61,6 +63,7 @@ export function createMatrix(width = state.level.width, height = state.level.hei
 } 
 
 export function openAllCells() {
+  playSound(loseSound);
   matrix.forEach((matrixLine) => {
     matrixLine.forEach((box) => {
       if (box.isBomb) {
@@ -68,6 +71,7 @@ export function openAllCells() {
       }
     });
   });
+
   stopTimer();
   setTimeout(lose, 500);
 }
