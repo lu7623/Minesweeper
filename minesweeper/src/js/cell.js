@@ -2,6 +2,8 @@ import { generateApp } from "./generateApp";
 import { getNeighbors } from "./matrix";
 import { state } from "./state";
 import { openAllCells } from "./matrix";
+import { empty } from "./matrix";
+import { win } from "./alerts";
 
 class Cell {
   constructor(isBomb, coordinates) {
@@ -57,7 +59,6 @@ class Cell {
       this.setFlag(false);
       const counter = document.querySelector('.counter');
       counter.value +=2;
-      console.log(counter.value);
       counter.innerText = counter.value.toString().padStart(3, "0");
       return;
     }
@@ -65,7 +66,6 @@ class Cell {
     if (!this.value && !this.isOpenned) {
       this.open();
       const allNeighbors = getNeighbors(this.coordinates);
-      console.log(allNeighbors);
       allNeighbors.forEach((neighbor) => {
         if (!neighbor.isOpenned) {
           neighbor.onCellClick(true);
@@ -99,7 +99,19 @@ class Cell {
       cellElem.classList.add(`cell-${this.value}`);
     }
    
-    this.cellElem.addEventListener("click", () => this.onCellClick());
+    this.cellElem.addEventListener("click", () => {
+      this.onCellClick();
+      let k=0;
+    empty.forEach(cell => {   
+      if (!cell.isOpenned) {
+        k +=1;
+      }
+     
+    })
+    if (k === 0) {
+      setTimeout(win, 500);
+    }
+    });
     this.cellElem.addEventListener("contextmenu", (e) => {
       e.preventDefault();
       if (this.isFlagged) {this.onCellClick()}

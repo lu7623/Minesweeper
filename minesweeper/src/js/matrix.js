@@ -5,6 +5,7 @@ import { lose } from "./alerts";
 import { stopTimer } from "./timer";
 
 export let matrix = [];
+export let empty = [];
 
 function addBombs(bombcount) {
 let currentBombs = bombcount;
@@ -39,12 +40,17 @@ export function getNeighbors (coordinates) {
 
 export function createMatrix(width = state.level.width, height = state.level.height, bombcount = state.bombcount) {
     matrix = Array.from({length: height}, () => Array.from({length: width}, () => 0 ));
-    console.log(matrix); 
     addBombs(bombcount);
+    empty.length =0;
     matrix.forEach((matrixLine, y) => {
     matrixLine.forEach((matrixElem, x) => {
       const newCell = createCell(Boolean(matrixElem), { x, y });
     matrix[y][x] = newCell;
+   
+    if (!newCell.isBomb){
+
+    empty.push(newCell);
+    }
    })
    });
    const replay = document.querySelector('.replay');

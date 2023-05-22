@@ -22,7 +22,8 @@ export const levels = [
     theme: 'light',
     bombcount: 10,
     time: 0,
-    steps: 0
+    steps: 0,
+    win: false
   }
   
 //   function setLocalStorage() {
