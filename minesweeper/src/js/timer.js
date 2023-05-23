@@ -14,19 +14,22 @@ let intervalID;
  export function startTimer(){
     intervalID = setInterval(start, 1000);
     const field = document.querySelector('.field');
-    field.removeEventListener('click', () => {
-      
-        startTimer();
-      }, { once: true });
+    field.classList.add('clicked');
 }
 
 // Function to stop setInterval call
 export function stopTimer() {
     clearInterval(intervalID);
+    const field = document.querySelector('.field');
+    field.classList.remove('clicked');
     const timer = document.querySelector('.timer');
     state.time = timer.value;
     timer.value =0;
     timer.innerText = timer.value.toString().padStart(3, '0');
+    field.removeEventListener('click', () => {
+        if (timer.value == 0 && !field.classList.contains('clicked'))  {
+        startTimer();}
+      });
 }
 
 
@@ -34,10 +37,11 @@ export function stopTimer() {
 
 export function setTimer() {
     const field = document.querySelector('.field');
-    field.addEventListener('click', (e) => {
-        console.log(e.target.innerText);
-        startTimer();
-      }, { once: true });
+    const timer = document.querySelector('.timer');
+    field.addEventListener('click', () => {
+        if (timer.value == 0 && !field.classList.contains('clicked'))  {
+        startTimer();}
+      });
       
 }
 
