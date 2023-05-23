@@ -14,8 +14,22 @@ export function lose() {
     }
     
     export function win () {
+        matrix.forEach((matrixLine) => {
+            matrixLine.forEach((box) => {
+              if (box.isBomb) {
+                box.open();
+              }
+            });
+          });
         const timer = document.querySelector('.timer');
         state.time = timer.value;
+        const scoreContainer = document.querySelector('.score-container');
+        const cellsOpen = document.getElementById('cellsOpen');
+        let result = [state.bombcount, state.time, state.steps];
+        const resultContainer = document.createElement('li');
+        resultContainer.classList.add('result');
+        resultContainer.innerText = `Bombs found: ${state.bombcount}; Time: ${state.time}s;  Steps: ${state.steps}; ${cellsOpen.innerText}`;
+scoreContainer.prepend(resultContainer);
         let msg = confirm(`You win! Your result is: \n
         Bombs found: ${state.bombcount} \n
         Time: ${state.time} \n

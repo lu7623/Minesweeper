@@ -78,6 +78,20 @@ bombsNumber.addEventListener('change', () => {
 
 stepsCount();
 setTimer();
+
+//score save
+
+const scoreBtn = document.querySelector('.score');
+const scoreContainer = document.querySelector('.score-container');
+scoreBtn.addEventListener('click', () => {
+  if (!scoreBtn.classList.contains("btn-pressed")) {
+    scoreBtn.classList.add("btn-pressed");
+    scoreContainer.classList.remove("hide");
+  } else {
+    scoreBtn.classList.remove("btn-pressed");
+    scoreContainer.classList.add("hide");
+  }
+})
 }
 
 export function fieldReset() {
@@ -88,6 +102,10 @@ export function fieldReset() {
       counter.value = state.bombcount;
       counter.innerText = counter.value.toString().padStart(3, "0");
       state.steps = 0;
+      const cellsOpen = document.getElementById('cellsOpen');
+      cellsOpen.innerText = `Cells opened: 0`;
+      const steps = document.getElementById('steps');
+    steps.innerText = `Steps: 0`;
       field.removeEventListener('click', (e) => {
     
         state.steps +=1;

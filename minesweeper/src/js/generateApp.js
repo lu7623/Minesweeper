@@ -46,6 +46,10 @@ export function generateApp() {
   sound.append(soundLabel);
   settings.append(sound);
   gameContainer.append(settings);
+  const scoreContainer = document.createElement('ol');
+  scoreContainer.classList.add('score-container');
+  scoreContainer.classList.add('hide');
+  gameContainer.append(scoreContainer);
   const themeCheck = document.createElement("div");
   themeCheck.innerText = "Appearence mode";
   themeCheck.classList.add("theme-check");
@@ -171,6 +175,7 @@ export function generateApp() {
   gameContainer.append(bottomPanel);
   bottomPanel.append(steps);
   bottomPanel.append(cellsOpen);
+  
   return field;
 
 }

@@ -1,3 +1,17 @@
+.score-container{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  @extend %border2-light;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.result{
+  margin: 5px 0;
+
+}
+
 .settings {
   width: calc(($cell-size + 0.8rem) * 10);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
