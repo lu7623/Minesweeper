@@ -160,6 +160,17 @@ export function generateApp() {
     });
   }
   gameContainer.append(field);
+  const bottomPanel = document.createElement('div');
+  bottomPanel.classList.add('bottom-panel');
+  const steps = document.createElement('span');
+  steps.id = 'steps';
+  steps.innerText = `Steps: ${state.steps}`
+  const cellsOpen = document.createElement('span');
+  cellsOpen.id ='cellsOpen';
+  cellsOpen.innerText ='Cells opened: 0';
+  gameContainer.append(bottomPanel);
+  bottomPanel.append(steps);
+  bottomPanel.append(cellsOpen);
   return field;
 
 }

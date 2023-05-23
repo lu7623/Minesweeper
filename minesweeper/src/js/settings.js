@@ -4,7 +4,7 @@ import { createMatrix } from "./matrix";
 import { stepsCount } from "./alerts";
 import { setTimer } from "./timer";
 import { stopTimer } from "./timer";
-import { startTimer } from "./timer";
+
 
 // settings button click
 
