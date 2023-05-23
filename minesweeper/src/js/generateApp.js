@@ -1,4 +1,5 @@
 import { state } from "./state";
+import { getLocalStorage } from "./alerts";
 
 
 export function generateApp() {
@@ -118,7 +119,7 @@ export function generateApp() {
   bombsNumber.name = "bombs";
   bombsNumber.id = "bombs";
   bombsNumber.value = 10;
-  bombsNumber.setAttribute("min", "1");
+  bombsNumber.setAttribute("min", "10");
   bombsNumber.setAttribute("max", "99");
   const bombsLabel = document.createElement('label');
   bombsLabel.setAttribute("for", "bombs");
@@ -175,7 +176,7 @@ export function generateApp() {
   gameContainer.append(bottomPanel);
   bottomPanel.append(steps);
   bottomPanel.append(cellsOpen);
-  
+  getLocalStorage();
   return field;
 
 }

@@ -23,18 +23,7 @@ export const levels = [
     bombcount: 10,
     time: 0,
     steps: 0,
+    cellsOpen: 0
   }
   
-//   function setLocalStorage() {
-//     localStorage.setItem("userstate", state);
-//   }
-//   window.addEventListener("beforeunload", setLocalStorage);
-  
-//   function getLocalStorage() {
-//     if (localStorage.getItem("userstate")) {
-//       state = localStorage.getItem("userstate");
-//     }
-//   }
-
-//   window.addEventListener('load', function(){
-//     getLocalStorage();})
+ 

@@ -9,6 +9,7 @@ import { stopTimer } from "./timer";
 // settings button click
 
 export function settingsSet() {
+  console.log(state.level.name);
   const settingsBtn = document.querySelector(".btn");
   const settings = document.querySelector(".settings");
   settingsBtn.addEventListener("click", () => {
@@ -161,7 +162,7 @@ function setTheme() {
 }
 
 
-function changeLvl () {
+export function changeLvl () {
    const field = document.querySelector('.field');
     if (state.level.height == 10) {
         field.classList.add("field-small");

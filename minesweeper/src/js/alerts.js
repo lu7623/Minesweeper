@@ -1,64 +1,95 @@
-import { state } from "./state"
+import { state } from "./state";
 import { fieldReset } from "./settings";
 import { setTimer } from "./timer";
 import { stopTimer } from "./timer";
 import { matrix } from "./matrix";
 
 export function lose() {
-    let msg = confirm('You lose! Play again!');
-    if (msg) {
+  let msg = confirm("You lose! Play again!");
+  if (msg) {
     fieldReset();
     stopTimer();
     setTimer();
-    }
-    }
-    
-    export function win () {
-        matrix.forEach((matrixLine) => {
-            matrixLine.forEach((box) => {
-              if (box.isBomb) {
-                box.open();
-              }
-            });
-          });
-        const timer = document.querySelector('.timer');
-        state.time = timer.value;
-        const scoreContainer = document.querySelector('.score-container');
-        const cellsOpen = document.getElementById('cellsOpen');
-        let result = [state.bombcount, state.time, state.steps];
-        const resultContainer = document.createElement('li');
-        resultContainer.classList.add('result');
-        resultContainer.innerText = `Bombs found: ${state.bombcount}; Time: ${state.time}s;  Steps: ${state.steps}; ${cellsOpen.innerText}`;
-scoreContainer.prepend(resultContainer);
-        let msg = confirm(`You win! Your result is: \n
+  }
+}
+
+export let results = [];
+export function win() {
+  matrix.forEach((matrixLine) => {
+    matrixLine.forEach((box) => {
+      if (box.isBomb) {
+        box.open();
+      }
+    });
+  });
+  const timer = document.querySelector(".timer");
+  state.time = timer.value;
+  const scoreContainer = document.querySelector(".score-container");
+  const cellsOpen = document.getElementById("cellsOpen");
+  let result = [state.bombcount, state.time, state.steps, state.cellsOpen];
+  results.unshift(result);
+  if (results.length > 10) {
+    results.pop();
+  }
+  console.log(results);
+  localStorage.setItem('userscore', results);
+  const resultContainer = document.createElement("li");
+  resultContainer.classList.add("result");
+  resultContainer.innerText = `Bombs found: ${state.bombcount}; Time: ${state.time}s;  Steps: ${state.steps}; ${cellsOpen.innerText}`;
+  scoreContainer.prepend(resultContainer);
+  let msg = confirm(`You win! Your result is: \n
         Bombs found: ${state.bombcount} \n
         Time: ${state.time} \n
         Steps: ${state.steps} \n
         Play again!`);
-        if (msg) {
-            stopTimer();
-            fieldReset(); 
-            setTimer();
-            }
-    }
-    
+  if (msg) {
+    stopTimer();
+    fieldReset();
+    setTimer();
+  }
+}
 
 export function stepsCount() {
-    const field = document.querySelector('.field');
-    field.addEventListener('click', (e) => {
-        state.steps +=1;
-        let k=0;
-    const steps = document.getElementById('steps');
+  const field = document.querySelector(".field");
+  field.addEventListener("click", (e) => {
+    state.steps += 1;
+    let k = 0;
+    const steps = document.getElementById("steps");
     steps.innerText = `Steps: ${state.steps}`;
     matrix.forEach((matrixLine) => {
-        matrixLine.forEach((box) => {
-          if (box.isOpenned) {
-           k+=1;
-          }
-        });
+      matrixLine.forEach((box) => {
+        if (box.isOpenned) {
+          k += 1;
+        }
       });
-      console.log(matrix);
-      const cellsOpen = document.getElementById('cellsOpen');
-      cellsOpen.innerText = `Cells opened: ${k}`
-    })
+    });
+    const cellsOpen = document.getElementById("cellsOpen");
+    state.cellsOpen = k;
+    cellsOpen.innerText = `Cells opened: ${k}`;
+  });
 }
+
+    
+  export  function getLocalStorage() {
+      
+      if (localStorage.getItem("userscore")) {
+      let  scores = localStorage.getItem("userscore").split(',');
+      let resultArr = [];
+    while(scores.length > 0) { 
+        resultArr.push(scores.slice(0, 4));
+        scores.splice(0, 4);
+    }
+
+    resultArr.forEach(score => {
+        results.push(score);
+        const scoreContainer = document.querySelector(".score-container");
+        const resultContainer = document.createElement("li");
+  resultContainer.classList.add("result");
+  resultContainer.innerText = `Bombs found: ${score[0]}; Time: ${score[1]}s;  Steps: ${score[2]}; Cells opened:${score[3]}`;
+  scoreContainer.append(resultContainer);
+    })
+       
+      }
+      
+    }
+ 

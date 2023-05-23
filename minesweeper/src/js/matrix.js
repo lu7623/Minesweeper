@@ -44,6 +44,7 @@ export function createMatrix(width = state.level.width, height = state.level.hei
     matrix = Array.from({length: height}, () => Array.from({length: width}, () => 0 ));
     addBombs(bombcount);
     empty.length =0;
+    console.log(matrix);
     matrix.forEach((matrixLine, y) => {
     matrixLine.forEach((matrixElem, x) => {
       const newCell = createCell(Boolean(matrixElem), { x, y });
