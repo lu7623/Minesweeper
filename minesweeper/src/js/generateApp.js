@@ -1,5 +1,5 @@
 import { state } from "./state";
-import { getLocalStorage } from "./alerts";
+import { getLocalStorage } from "./localStorage";
 
 
 export function generateApp() {

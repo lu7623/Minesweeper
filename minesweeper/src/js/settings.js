@@ -4,12 +4,14 @@ import { createMatrix } from "./matrix";
 import { stepsCount } from "./alerts";
 import { setTimer } from "./timer";
 import { stopTimer } from "./timer";
+import { setState } from "./localStorage";
+import { getState } from "./localStorage";
 
 
 // settings button click
 
 export function settingsSet() {
-  console.log(state.level.name);
+  getState();
   const settingsBtn = document.querySelector(".btn");
   const settings = document.querySelector(".settings");
   settingsBtn.addEventListener("click", () => {
@@ -93,6 +95,8 @@ scoreBtn.addEventListener('click', () => {
     scoreContainer.classList.add("hide");
   }
 })
+
+window.addEventListener('beforeunload', setState)
 }
 
 export function fieldReset() {
@@ -116,7 +120,7 @@ export function fieldReset() {
 }
 
 
-function setTheme() {
+export function setTheme() {
   const cells = document.querySelectorAll(".cell");
   const body = document.querySelector("body");
   const field = document.querySelector(".field");

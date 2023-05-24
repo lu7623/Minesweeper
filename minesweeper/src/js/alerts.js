@@ -31,7 +31,6 @@ export function win() {
   if (results.length > 10) {
     results.pop();
   }
-  console.log(results);
   localStorage.setItem('userscore', results);
   const resultContainer = document.createElement("li");
   resultContainer.classList.add("result");
@@ -70,26 +69,4 @@ export function stepsCount() {
 }
 
     
-  export  function getLocalStorage() {
-      
-      if (localStorage.getItem("userscore")) {
-      let  scores = localStorage.getItem("userscore").split(',');
-      let resultArr = [];
-    while(scores.length > 0) { 
-        resultArr.push(scores.slice(0, 4));
-        scores.splice(0, 4);
-    }
-
-    resultArr.forEach(score => {
-        results.push(score);
-        const scoreContainer = document.querySelector(".score-container");
-        const resultContainer = document.createElement("li");
-  resultContainer.classList.add("result");
-  resultContainer.innerText = `Bombs found: ${score[0]}; Time: ${score[1]}s;  Steps: ${score[2]}; Cells opened:${score[3]}`;
-  scoreContainer.append(resultContainer);
-    })
-       
-      }
-      
-    }
- 
+  
