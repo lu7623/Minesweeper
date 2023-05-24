@@ -1,4 +1,3 @@
-import { generateRandom } from "./getRandom";
 import { createCell } from "./cell";
 import { state } from "./state";
 import { lose } from "./alerts";
@@ -9,15 +8,16 @@ import loseSound from '../assets/lose.mp3';
 export let matrix = [];
 export let empty = [];
 
+
 function addBombs(bombcount) {
 let currentBombs = bombcount;
 const matrixHeight = matrix.length;
 const matrixWidth = matrix[0].length;
 while (currentBombs) {
-    const x = generateRandom(0, matrixWidth-1);
-    const y = generateRandom(0, matrixHeight-1);
+    const x = Math.floor(Math.random()*(matrixHeight));
+    const y = Math.floor(Math.random()*(matrixWidth));
     const matrixElem = matrix[y][x];
-    if (!matrixElem) {
+    if (matrixElem==0) {
         matrix[y][x] = 1;
         currentBombs -= 1;
     }
@@ -43,8 +43,8 @@ export function getNeighbors (coordinates) {
 export function createMatrix(width = state.level.width, height = state.level.height, bombcount = state.bombcount) {
     matrix = Array.from({length: height}, () => Array.from({length: width}, () => 0 ));
     addBombs(bombcount);
+    localStorage.setItem('usermatrix', matrix);
     empty.length =0;
-    console.log(matrix);
     matrix.forEach((matrixLine, y) => {
     matrixLine.forEach((matrixElem, x) => {
       const newCell = createCell(Boolean(matrixElem), { x, y });
