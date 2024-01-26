@@ -1,0 +1,27 @@
+%border1-light {
+    @include border($size: 0.4rem, $color1: $border-front-light, $color2: $border-back-light)
+}
+
+%border2-light {
+    @include border($size: 0.4rem, $color1: $border-back-light, $color2: $border-front-light)
+}
+
+%border1-dark {
+    @include border($size: 0.4rem, $color1: $border-front-dark, $color2: $border-back-dark);
+}
+
+%border2-dark {
+    @include border($size: 0.4rem, $color1: $border-back-dark, $color2: $border-front-dark);
+}
+
+%border-thin-light {
+    @include border($size: 0.2rem, $color1: $border-back-light, $color2: $border-front-light);
+}
+
+%border-thin-dark {
+    @include border($size: 0.4rem, $color1: $border-back-dark, $color2: $border-front-dark);
+}
+
+%transition {
+    transition: all .3s ease-out;
+}

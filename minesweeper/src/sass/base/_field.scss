@@ -1,0 +1,38 @@
+.field {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+}
+
+.field-small {
+    width: calc(($cell-size + 0.8rem) * 10);
+    height: calc(($cell-size + 0.8rem) * 10);
+}
+
+.field-medium {
+    width: calc(($cell-size + 0.8rem) * 15);
+    height: calc(($cell-size + 0.8rem) * 15);
+}
+
+.field-large {
+    width: calc(($cell-size + 0.8rem) * 25);
+    height: calc(($cell-size + 0.8rem) * 25);
+    @include media-tablet {
+        width: calc((2.5rem + 0.8rem) * 25);
+    height: calc((2.5rem + 0.8rem) * 25);
+        & > .cell {
+            width: 2.5rem;
+            height: 2.5rem
+        }
+    }
+    @include media-mobile {
+        width: 68rem;
+    height: 70rem;
+        & > .cell {
+            width: 2rem;
+            height: 2rem
+        }
+    }
+    }

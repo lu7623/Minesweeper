@@ -1,0 +1,35 @@
+.panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 7px;
+}
+
+.replay {
+  padding: 3px;
+background-size: contain;
+  height: 2rem;
+  width: 2rem;
+}
+
+
+.replay-smile {
+  background-image: url(../assets/smile.png);
+}
+
+.replay-dead {
+  background-image: url(../assets/dead.png);
+}
+
+.replay:hover {
+cursor: pointer;
+}
+
+.counter,
+.timer {
+  background-color: #a9a9a9;
+  color: forestgreen;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3rem;
+}

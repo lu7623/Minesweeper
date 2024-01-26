@@ -1,0 +1,24 @@
+.main-container {
+    margin: 0 auto;
+    width: fit-content;
+    font-size: 1.6rem;
+}
+
+.title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: darkolivegreen;
+    text-align: center;
+    font-size: 2rem;
+   margin: 0;
+}
+
+.gameContainer {
+    padding: 10px;
+}
+
+.bottom-panel {
+    padding: 5px;
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    justify-content: space-between;
+}

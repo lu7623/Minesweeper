@@ -1,0 +1,27 @@
+.body-light {
+    background-color: white;
+}
+
+.cell-light {
+    @extend %border1-light;
+    background-color: $cells-light;
+}
+
+.settings-light,
+.field-light,
+.panel-light {
+    @extend %border2-light;
+}
+
+.gameContainer-light, 
+.replay-light {
+    @extend %border1-light;
+    background-color: $box-light;
+    color:black;
+}
+
+.counter-light,
+.timer-light {
+    background-color: #a9a9a9;
+@extend %border-thin-light; 
+}
