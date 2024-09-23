@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minesweeper</title>
+    <link href="favicon.ico" rel="shortcut icon" />
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="gameContainer theme-change gameContainer-light">
+        <div class="top-panel">
+          <div class="top btn theme-change btn-light">Settings</div>
+          <h1 class="title">RSS Minesweeper</h1>
+          <div class="top score theme-change score-light">Score</div>
+        </div>
+        <div class="settings hide theme-change settings-light">
+          <div class="sound-check">
+            <span>Sound</span
+            ><label class="switch"
+              ><input class="optionsSwitch" type="checkbox" id="soundSet"
+            /></label>
+          </div>
+          <div class="theme-check">
+            Appearence mode
+            <div class="theme">
+              <input type="radio" id="light" name="theme" value="light" /><label
+                for="theme"
+                >light</label
+              >
+            </div>
+            <div class="theme">
+              <input type="radio" id="dark" name="theme" value="dark" /><label
+                for="theme"
+                >dark</label
+              >
+            </div>
+          </div>
+          <div class="level-check">
+            Difficulty level
+            <div class="level">
+              <input type="radio" id="easy" name="level" value="easy" /><label
+                for="level"
+                >easy</label
+              >
+            </div>
+            <div class="level">
+              <input
+                type="radio"
+                id="medium"
+                name="level"
+                value="medium"
+              /><label for="level">medium</label>
+            </div>
+            <div class="level">
+              <input type="radio" id="hard" name="level" value="hard" /><label
+                for="level"
+                >hard</label
+              >
+            </div>
+          </div>
+          <div class="bombs">
+            <input
+              type="range"
+              name="bombs"
+              id="bombs"
+              min="10"
+              max="99"
+            /><label for="bombs"> Bombs</label>
+          </div>
+        </div>
+        <ol class="score-container hide"></ol>
+        <div class="panel theme-change panel-light">
+          <div class="counter theme-change counter-light">009</div>
+          <div class="replay replay-smile theme-change replay-light"></div>
+          <div class="timer theme-change timer-light">000</div>
+        </div>
+        <div class="field field-small theme-change field-light">
+         
+        </div>
+        <div class="bottom-panel">
+          <span id="steps">Steps: 0</span
+          ><span id="cellsOpen">Cells opened: 0</span>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

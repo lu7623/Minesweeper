@@ -1,4 +1,3 @@
-import { generateApp } from "./generateApp";
 import { getNeighbors } from "./matrix";
 import { state } from "./state";
 import { openAllCells } from "./matrix";
@@ -6,9 +5,9 @@ import { empty } from "./matrix";
 import { win } from "./alerts";
 import { playSound } from "./sound";
 
-import winSound from '../assets/win.mp3';
-import click from '../assets/click.mp3';
-import flag from '../assets/flag.mp3';
+import winSound from "../assets/win.mp3";
+import click from "../assets/click.mp3";
+import flag from "../assets/flag.mp3";
 
 class Cell {
   constructor(isBomb, coordinates) {
@@ -35,7 +34,6 @@ class Cell {
     if (bombcount) {
       this.setCellValue(bombcount);
     }
-    
   }
 
   showCellValue() {
@@ -46,9 +44,10 @@ class Cell {
     this.isFlagged = isFlagged;
     this.cellElem.innerHTML = isFlagged ? "🚩" : "";
     playSound(flag);
-    const counter = document.querySelector('.counter');
-    if (counter.value>0) {
-    counter.value-=1;}
+    const counter = document.querySelector(".counter");
+    if (counter.value > 0) {
+      counter.value -= 1;
+    }
     counter.innerText = counter.value.toString().padStart(3, "0");
   }
 
@@ -62,16 +61,14 @@ class Cell {
 
   onCellClick(allowOpenNumber = false) {
     if (this.isFlagged) {
-      
       this.setFlag(false);
-      const counter = document.querySelector('.counter');
-      counter.value +=2;
+      const counter = document.querySelector(".counter");
+      counter.value += 2;
       counter.innerText = counter.value.toString().padStart(3, "0");
       return;
     }
 
     if (!this.value && !this.isOpenned) {
-    
       this.open();
       const allNeighbors = getNeighbors(this.coordinates);
       allNeighbors.forEach((neighbor) => {
@@ -85,16 +82,15 @@ class Cell {
     ) {
       this.open();
     } else if (this.isBomb) {
-      
       openAllCells();
-      const replay = document.querySelector('.replay');
-      replay.classList.remove('replay-smile');
-      replay.classList.add('replay-dead')
+      const replay = document.querySelector(".replay");
+      replay.classList.remove("replay-smile");
+      replay.classList.add("replay-dead");
     }
 
     this.showCellValue();
   }
-   createCellonField(field) {
+  createCellonField(field) {
     const cellElem = document.createElement("div");
     this.cellElem = cellElem;
     //cellElem.innerHTML = this.value || "";
@@ -107,41 +103,42 @@ class Cell {
     if (this.value) {
       cellElem.classList.add(`cell-${this.value}`);
     }
-   
+
     this.cellElem.addEventListener("click", () => {
       this.onCellClick();
       playSound(click);
-      let k=0;
-    empty.forEach(cell => {   
-      if (!cell.isOpenned) {
-        k +=1;
+      let k = 0;
+      empty.forEach((cell) => {
+        if (!cell.isOpenned) {
+          k += 1;
+        }
+      });
+      if (k === 0) {
+        setTimeout(win, 500);
+        playSound(winSound);
       }
-     
-    })
-    if (k === 0) {
-      setTimeout(win, 500);
-      playSound(winSound);
-    }
     });
     this.cellElem.addEventListener("contextmenu", (e) => {
       e.preventDefault();
-      
-      if (this.isFlagged) {this.onCellClick()}
-      else {
-      this.setFlag(true);
-      playSound(flag);}
+
+      if (this.isFlagged) {
+        this.onCellClick();
+      } else {
+        this.setFlag(true);
+        playSound(flag);
+      }
     });
 
     field.append(cellElem);
   }
 }
 
-const field = generateApp();
+const field = document.querySelector(".field");
 
 export function createCell(isBomb, coordinates) {
   const newCell = new Cell(isBomb, coordinates);
   newCell.setCellValue();
-    newCell.setType();
+  newCell.setType();
   newCell.createCellonField(field);
   return newCell;
 }
