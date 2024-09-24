@@ -1,10 +1,7 @@
-import { getNeighbors } from "./matrix";
+import { getNeighbors, matrix } from "./matrix";
 import { state } from "./state";
-import { openAllCells } from "./matrix";
-import { empty } from "./matrix";
 import { win } from "./alerts";
 import { playSound } from "./sound";
-
 import winSound from "../assets/win.mp3";
 import click from "../assets/click.mp3";
 import flag from "../assets/flag.mp3";
@@ -13,6 +10,7 @@ class Cell {
   constructor(isBomb, coordinates) {
     this.isBomb = isBomb;
     this.coordinates = coordinates;
+    this.neighbors = []
   }
 
   setCellValue(value) {
@@ -24,7 +22,7 @@ class Cell {
       this.setCellValue("💣");
       return;
     }
-    const neighbors = getNeighbors(this.coordinates);
+    const neighbors = getNeighbors(this.coordinates, matrix.matrix);
     let bombcount = 0;
     neighbors.forEach((neighbor) => {
       if (neighbor === 1 || neighbor.isBomb) {
@@ -70,7 +68,7 @@ class Cell {
 
     if (!this.value && !this.isOpenned) {
       this.open();
-      const allNeighbors = getNeighbors(this.coordinates);
+      const allNeighbors = getNeighbors(this.coordinates, matrix.matrix);
       allNeighbors.forEach((neighbor) => {
         if (!neighbor.isOpenned) {
           neighbor.onCellClick(true);
@@ -82,7 +80,7 @@ class Cell {
     ) {
       this.open();
     } else if (this.isBomb) {
-      openAllCells();
+      matrix.openAllCells();
       const replay = document.querySelector(".replay");
       replay.classList.remove("replay-smile");
       replay.classList.add("replay-dead");
@@ -108,7 +106,7 @@ class Cell {
       this.onCellClick();
       playSound(click);
       let k = 0;
-      empty.forEach((cell) => {
+      matrix.empty.forEach((cell) => {
         if (!cell.isOpenned) {
           k += 1;
         }

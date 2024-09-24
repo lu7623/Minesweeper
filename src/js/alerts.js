@@ -15,7 +15,7 @@ export function lose() {
 
 export let results = [];
 export function win() {
-  matrix.forEach((matrixLine) => {
+  matrix.matrix.forEach((matrixLine) => {
     matrixLine.forEach((box) => {
       if (box.isBomb) {
         box.open();
@@ -55,7 +55,7 @@ export function stepsCount() {
     let k = 0;
     const steps = document.getElementById("steps");
     steps.innerText = `Steps: ${state.steps}`;
-    matrix.forEach((matrixLine) => {
+    matrix.matrix.forEach((matrixLine) => {
       matrixLine.forEach((box) => {
         if (box.isOpenned) {
           k += 1;
