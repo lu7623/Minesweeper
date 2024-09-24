@@ -31,7 +31,7 @@ export function win() {
   if (results.length > 10) {
     results.pop();
   }
-  localStorage.setItem('userscore', results);
+  localStorage.setItem("userscore", results);
   const resultContainer = document.createElement("li");
   resultContainer.classList.add("result");
   resultContainer.innerText = `Bombs found: ${state.bombcount}; Time: ${state.time}s;  Steps: ${state.steps}; ${cellsOpen.innerText}`;
@@ -67,6 +67,3 @@ export function stepsCount() {
     cellsOpen.innerText = `Cells opened: ${k}`;
   });
 }
-
-    
-  

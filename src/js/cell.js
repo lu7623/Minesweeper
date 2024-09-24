@@ -90,10 +90,10 @@ class Cell {
 
     this.showCellValue();
   }
+
   createCellonField(field) {
     const cellElem = document.createElement("div");
     this.cellElem = cellElem;
-    //cellElem.innerHTML = this.value || "";
     cellElem.classList.add("cell");
     if (state.theme == "light") {
       cellElem.classList.add("cell-light");
