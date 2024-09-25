@@ -1,5 +1,4 @@
 import { createCell } from "./cell";
-import { state } from "./state";
 import { lose } from "./alerts";
 import { stopTimer } from "./timer";
 import { playSound } from "./sound";
@@ -18,7 +17,7 @@ export function getNeighbors(coordinates, matrix) {
   return neighbors;
 }
 
-class Matrix {
+export class Matrix {
   constructor(width, height, bombcount) {
     this.width = width;
     this.height = height;
@@ -48,7 +47,7 @@ class Matrix {
       Array.from({ length: this.width }, () => 0)
     );
     this.addBombs();
-    localStorage.setItem("usermatrix", matrix);
+    localStorage.setItem("usermatrix", this.matrix);
     this.empty.length = 0;
     this.matrix.forEach((matrixLine, y) => {
       matrixLine.forEach((matrixElem, x) => {
@@ -82,8 +81,4 @@ class Matrix {
   }
 }
 
-export const matrix = new Matrix(
-  state.level.width,
-  state.level.height,
-  state.bombcount
-);
+

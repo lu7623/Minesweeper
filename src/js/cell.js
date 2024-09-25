@@ -1,10 +1,11 @@
-import { getNeighbors, matrix } from "./matrix";
+import { getNeighbors } from "./matrix";
 import { state } from "./state";
 import { win } from "./alerts";
 import { playSound } from "./sound";
 import winSound from "../assets/win.mp3";
 import click from "../assets/click.mp3";
 import flag from "../assets/flag.mp3";
+import {matrix} from "../../index"
 
 class Cell {
   constructor(isBomb, coordinates) {

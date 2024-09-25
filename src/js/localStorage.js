@@ -1,10 +1,5 @@
 import { state } from "./state";
 import { results } from "./alerts";
-import { setTheme } from "./settings";
-import { levels } from "./state";
-import { changeLvl } from "./settings";
-import { fieldReset } from "./settings";
-
 
 export function getLocalStorage() {
   if (localStorage.getItem("userscore")) {
@@ -27,52 +22,9 @@ export function getLocalStorage() {
 }
 
 export function setState() {
-    localStorage.setItem('userlvl', state.level.name);
-    localStorage.setItem('usertheme', state.theme);
-    localStorage.setItem('usersound', state.sound);
-    localStorage.setItem('userbombs', state.bombcount);
+  localStorage.setItem("userlvl", state.level.name);
+  localStorage.setItem("usertheme", state.theme);
+  localStorage.setItem("usersound", state.sound);
+  localStorage.setItem("userbombs", state.bombcount);
 }
 
-export function getState() {
-    if (localStorage.getItem("usersound")){
-    const sound = document.getElementById('soundSet');
-let usersound =  localStorage.getItem("usersound");
-if (usersound == 'true') {
-    sound.checked = true;
-    state.sound = true
-} else {
-    sound.checked = false;
-    state.sound = false;
-}}
-if (localStorage.getItem("usertheme")) {
-    let theme =  localStorage.getItem("usertheme");
-    state.theme = theme;
-    const themes = document.getElementsByName("theme");
-    themes.forEach(t => {
-        if (t.value == theme) {t.checked = true}
-    })
-    setTheme();
-}
-if (localStorage.getItem("userlvl")) {
-    let userlvl =  localStorage.getItem("userlvl");
-    const levelsChange = document.getElementsByName("level");
-    levelsChange.forEach(l => {
-        if (l.value == userlvl) {
-            l.checked = true;
-        }
-    })
-    levels.forEach(lvl => {
-        if (userlvl == lvl.name) {
-            state.level = lvl;
-            changeLvl();
-        }
-    })
-}
-if (localStorage.getItem("userbombs")) {
-    let userbombs =  localStorage.getItem("userbombs");
-    state.bombcount = userbombs;
-    const bombsNumber = document.getElementById('bombs');
-    bombsNumber.value = userbombs;
-    fieldReset();
-}
-}

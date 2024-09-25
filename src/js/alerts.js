@@ -1,13 +1,11 @@
 import { state } from "./state";
-import { fieldReset } from "./settings";
-import { setTimer } from "./timer";
-import { stopTimer } from "./timer";
-import { matrix } from "./matrix";
+import { game, matrix } from "../../index";
+import { setTimer, stopTimer } from "./timer";
 
 export function lose() {
   let msg = confirm("You lose! Play again!");
   if (msg) {
-    fieldReset();
+    game.fieldReset();
     stopTimer();
     setTimer();
   }
@@ -43,7 +41,7 @@ export function win() {
         Play again!`);
   if (msg) {
     stopTimer();
-    fieldReset();
+    game.fieldReset();
     setTimer();
   }
 }
